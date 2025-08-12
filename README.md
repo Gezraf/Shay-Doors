@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a converted version of the original base44 React application to standard HTML, CSS, and JavaScript. The website showcases Shay Shtrit's professional door work, including a gallery of projects and contact information.
+This website showcases Shay Shtrit's professional door work, including a gallery of projects and contact information.
 
 ## Features
 
@@ -45,7 +45,7 @@ This is a converted version of the original base44 React application to standard
 
 ## Key Features Preserved
 
-### Original base44 Features:
+### Features:
 - ✅ All meta tags and SEO optimization
 - ✅ PWA manifest and service worker
 - ✅ Responsive design
@@ -103,15 +103,3 @@ The converted version is significantly faster than the original React version:
 - **Smaller bundle size**
 - **Faster initial load**
 - **Better caching with service worker**
-
-## License
-
-This is a converted version of the original base44 application. All rights belong to the original creators.
-
-## Support
-
-For any issues or questions about the conversion, please refer to the original base44 documentation or contact the development team.
-
----
-
-**Note**: This is an exact conversion that maintains all the original functionality and appearance while removing the complex build system and dependencies. 
