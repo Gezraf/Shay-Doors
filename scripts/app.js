@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Mobile menu functionality
-  const mobileMenuBtn = document.querySelector('button.md\\:hidden');
+  const mobileMenuBtn = document.querySelector('#mobile-menu-btn') || document.querySelector('button.md\\:hidden');
   const navLinks = document.querySelector('.hidden.md\\:flex');
   
   if (mobileMenuBtn && navLinks) {
@@ -115,6 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
     section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     observer.observe(section);
   });
+
+
 
   // WhatsApp floating button functionality
   const whatsappBtn = document.querySelector('a[href*="wa.me"]');
@@ -675,3 +677,248 @@ document.addEventListener('keydown', function(e) {
     closeModal();
   }
 }); 
+
+// Accessibility functionality
+function initAccessibility() {
+  const accessibilityBtn = document.getElementById('accessibility-btn');
+  const accessibilityMenu = document.getElementById('accessibility-menu');
+  const closeMenuBtn = document.getElementById('close-accessibility-menu');
+  const ttsBtn = document.getElementById('tts-btn');
+  const colorblindBtn = document.getElementById('colorblind-btn');
+  const fontSizeSlider = document.getElementById('font-size-slider');
+  const ttsLabel = document.getElementById('tts-label');
+  
+  let isColorblindMode = false;
+  let speechSynthesis = window.speechSynthesis;
+  
+  // Toggle accessibility menu
+  if (accessibilityBtn && accessibilityMenu) {
+    accessibilityBtn.addEventListener('click', function() {
+      accessibilityMenu.classList.toggle('hidden');
+    });
+  }
+  
+  // Close menu
+  if (closeMenuBtn && accessibilityMenu) {
+    closeMenuBtn.addEventListener('click', function() {
+      accessibilityMenu.classList.add('hidden');
+    });
+  }
+  
+  // Menu only closes via button or X button (removed click outside to close)
+  
+  // Text to Speech functionality
+  if (ttsBtn) {
+    let isSpeaking = false;
+    let currentUtterance = null;
+    
+    ttsBtn.addEventListener('click', function() {
+      if (isSpeaking) {
+        // Stop current speech
+        speechSynthesis.cancel();
+        isSpeaking = false;
+        currentUtterance = null;
+        
+        // Reset button
+        ttsBtn.textContent = '🎤 הפעל קריאה';
+        ttsBtn.classList.remove('bg-red-500', 'hover:bg-red-600');
+        ttsBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+        return;
+      }
+      
+      const selectedText = window.getSelection().toString().trim();
+      
+      if (selectedText) {
+        // Stop any ongoing speech
+        speechSynthesis.cancel();
+        
+        // Create speech utterance
+        const utterance = new SpeechSynthesisUtterance(selectedText);
+        utterance.lang = 'he-IL'; // Hebrew
+        utterance.rate = 0.9; // Slightly slower for better comprehension
+        
+        // Store current utterance and start speaking
+        currentUtterance = utterance;
+        isSpeaking = true;
+        speechSynthesis.speak(utterance);
+        
+        // Update button text
+        ttsBtn.textContent = '🔇 עצור קריאה';
+        ttsBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+        ttsBtn.classList.add('bg-red-500', 'hover:bg-red-600');
+        
+        // Reset button when speech ends
+        utterance.onend = function() {
+          isSpeaking = false;
+          currentUtterance = null;
+          ttsBtn.textContent = '🎤 הפעל קריאה';
+          ttsBtn.classList.remove('bg-red-500', 'hover:bg-red-600');
+          ttsBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+        };
+        
+        utterance.onerror = function() {
+          isSpeaking = false;
+          currentUtterance = null;
+          ttsBtn.textContent = '🎤 הפעל קריאה';
+          ttsBtn.classList.remove('bg-red-500', 'hover:bg-red-600');
+          ttsBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+        };
+      } else {
+        ttsLabel.classList.remove('text-white');
+        ttsLabel.classList.add('text-red-500');
+        ttsLabel.classList.add('border-red-500');
+      }
+    });
+  }
+  
+  // Colorblind mode
+  if (colorblindBtn) {
+    colorblindBtn.addEventListener('click', function() {
+      isColorblindMode = !isColorblindMode;
+      
+      if (isColorblindMode) {
+        // Apply colorblind-friendly colors (deuteranopia-friendly)
+        document.documentElement.style.setProperty('--accent-color', '#FF6B35');
+        document.documentElement.style.setProperty('--primary-color', '#2E86AB');
+        document.documentElement.style.setProperty('--success-color', '#A23B72');
+        
+        // Update button
+        colorblindBtn.textContent = '👁️ כבה מצב עיוורי צבעים';
+        colorblindBtn.classList.remove('bg-purple-500', 'hover:bg-purple-600');
+        colorblindBtn.classList.add('bg-orange-500', 'hover:bg-orange-600');
+        
+        // Find or create the main content wrapper
+        let mainContent = document.querySelector('main');
+        if (!mainContent) {
+          // If no main tag exists, wrap all content except fixed elements
+          mainContent = document.createElement('main');
+          mainContent.id = 'main-content-wrapper';
+          
+          // Move all content except fixed elements into the wrapper
+          while (document.body.firstChild) {
+            const child = document.body.firstChild;
+            if (!child.classList?.contains('fixed') && !child.querySelector?.('.fixed')) {
+              mainContent.appendChild(child);
+            } else {
+              document.body.appendChild(child); // Move fixed elements to the end
+            }
+          }
+          document.body.insertBefore(mainContent, document.body.firstChild);
+        }
+        
+        // Apply filter to main content only
+        mainContent.style.filter = 'contrast(1.3) saturate(0.7) hue-rotate(0deg)';
+        
+        // Apply specific color overrides for better distinction
+        const style = document.createElement('style');
+        style.id = 'colorblind-overrides';
+        style.textContent = `
+          /* Colorblind-friendly overrides */
+          #colorblind-wrapper .bg-blue-500, 
+          #colorblind-wrapper .bg-blue-600 { background-color: #1e40af !important; }
+          #colorblind-wrapper .bg-green-500, 
+          #colorblind-wrapper .bg-green-600 { background-color: #059669 !important; }
+          #colorblind-wrapper .bg-red-500, 
+          #colorblind-wrapper .bg-red-600 { background-color: #dc2626 !important; }
+          #colorblind-wrapper .text-blue-400 { color: #1e40af !important; }
+          #colorblind-wrapper .text-blue-300 { color: #1e40af !important; }
+        `;
+        document.head.appendChild(style);
+      } else {
+        // Reset to normal colors
+        document.documentElement.style.removeProperty('--accent-color');
+        document.documentElement.style.removeProperty('--primary-color');
+        document.documentElement.style.removeProperty('--success-color');
+        
+        // Update button
+        colorblindBtn.textContent = '👁️ הפעל מצב עיוורי צבעים';
+        colorblindBtn.classList.remove('bg-orange-500', 'hover:bg-orange-600');
+        colorblindBtn.classList.add('bg-purple-500', 'hover:bg-purple-600');
+        
+        // Remove filter from main content
+        const mainContent = document.querySelector('main') || document.getElementById('main-content-wrapper');
+        if (mainContent) {
+          mainContent.style.filter = '';
+        }
+        
+        // Remove style overrides
+        const colorblindStyle = document.getElementById('colorblind-overrides');
+        if (colorblindStyle) {
+          colorblindStyle.remove();
+        }
+      }
+    });
+  }
+  
+  // Font size scaling
+  if (fontSizeSlider) {
+    // Store original font sizes to prevent cumulative scaling
+    const originalFontSizes = new Map();
+    
+    // Initialize original font sizes
+    function initializeOriginalFontSizes() {
+      const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div, button, a, label');
+      textElements.forEach(element => {
+        // Skip accessibility menu elements
+        if (element.closest('#accessibility-menu')) {
+          return;
+        }
+        if (!originalFontSizes.has(element)) {
+          originalFontSizes.set(element, parseFloat(window.getComputedStyle(element).fontSize));
+        }
+      });
+    }
+    
+    // Apply scaling based on original sizes
+    function applyFontScaling(scale) {
+      const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div, button, a, label');
+      
+      textElements.forEach(element => {
+        // Skip accessibility menu elements
+        if (element.closest('#accessibility-menu')) {
+          return;
+        }
+        const originalSize = originalFontSizes.get(element);
+        if (originalSize) {
+          const newSize = originalSize * scale;
+          element.style.fontSize = `${newSize}px`;
+        }
+      });
+    }
+    
+    // Initialize on page load
+    initializeOriginalFontSizes();
+    
+    fontSizeSlider.addEventListener('input', function() {
+      const scale = parseFloat(this.value);
+      applyFontScaling(scale);
+      
+      // Update percentage display
+      const percentageDisplay = document.getElementById('font-size-percentage');
+      if (percentageDisplay) {
+        percentageDisplay.textContent = `${Math.round(scale * 100)}%`;
+      }
+    });
+    
+    // Store user preference
+    fontSizeSlider.addEventListener('change', function() {
+      localStorage.setItem('fontSizeScale', this.value);
+    });
+    
+    // Load user preference on page load
+    const savedScale = localStorage.getItem('fontSizeScale');
+    if (savedScale) {
+      fontSizeSlider.value = savedScale;
+      fontSizeSlider.dispatchEvent(new Event('input'));
+    } else {
+      // Set to normal size (100%) by default
+      fontSizeSlider.value = 1;
+      fontSizeSlider.dispatchEvent(new Event('input'));
+    }
+  }
+}
+
+// Initialize accessibility when DOM is loaded
+if (document.getElementById('accessibility-btn')) {
+  initAccessibility();
+} 
