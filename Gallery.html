@@ -11,7 +11,13 @@
   <meta name="apple-mobile-web-app-title" content="שי דלתות יוקרה">
   <link href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/2c5cb969e_logo.png" rel="apple-touch-icon"/>
   
-  <title>שי דלתות יוקרה - יצירת קשר</title>
+  <title>שי דלתות יוקרה - גלריה | דלתות קו-אפס, חיפוי פורצלן ואלומיניום</title>
+  <meta name="description" content="גלריית עבודות של שי דלתות יוקרה - דלתות קו-אפס, חיפוי פורצלן, אלומיניום וזכוכית. דלתות כניסה יוקרתיות ועיצוב דלתות לבית.">
+  <meta name="keywords" content="שי דלתות יוקרה, שי דלתות קו-אפס, דלתות קו-אפס, דלתות יוקרה, דלתות כניסה, עיצוב דלתות, דלתות לבית, חיפוי דלתות, חיפוי פורצלן, חיפוי אלומיניום, חיפוי זכוכית, גלריה">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="שי שטרית">
+  <meta name="geo.region" content="IL">
+  <meta name="geo.placename" content="ישראל">
   
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
@@ -100,7 +106,7 @@
                         </div>
 
                         <!-- Sub-filter for Line-Zero with Cladding -->
-                        <div id="line-zero-sub-filters" class="hidden mt-10 text-center">
+                        <div id="line-zero-sub-filters" class="hidden text-center">
                           <div class="mb-4">
                             <br>
                             <h3 class="text-xl font-bold text-slate-800">בחר סוג חיפוי:</h3>
@@ -123,10 +129,10 @@
                         </div>
 
                         <!-- Sub-filter for Entrance Doors -->
-                        <div id="entrance-sub-filters" class="hidden mt-10 text-center">
-                          <div class="mb-6">
+                        <div id="entrance-sub-filters" class="hidden text-center">
+                          <div class="mb-4">
                             <br>
-                            <h3 class="text-xl font-bold text-slate-800 mb-2">בחר סוג:</h3>
+                            <h3 class="text-xl font-bold text-slate-800">בחר סוג:</h3>
                             <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mx-auto"></div>
                           </div>
                           <div class="flex flex-wrap justify-center gap-4">
@@ -253,6 +259,53 @@
                     <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
                   </svg>
                 </a>
+
+
+                  <div class="fixed bottom-24 left-6 z-30">
+                    <!-- Accessibility Menu -->
+                    <div id="accessibility-menu" class="hidden mb-4 bg-white rounded-lg shadow-xl border border-gray-200 p-4 w-64">
+
+                        <!-- Close Button -->
+                       <button id="close-accessibility-menu" class="bg-red-500 hover:bg-red-600 text-white rounded-full text-base transition-colors flex items-center justify-center z-50" style="width: 30px; height: 30px; position: absolute; top: 10px; right: 10px;">
+                         <span style="user-select: none; pointer-events: none; line-height: 1;">✕</span>
+                       </button>
+                      
+                       <h3 class="text-xl font-semibold text-black text-center" style="position: relative; pointer-events: none;">אפשרויות נגישות</h3> 
+
+                      <!-- Text to Speech -->
+                      <div class="flex flex-col items-center justify-center mb-2">
+                        <label id="tts-label" class="block text-base font-semibold text-white mb-1">בחר טקסט ולחץ על הכפתור כדי לשמוע אותו בקול רם.</label>
+                        <button id="tts-btn" class="bg-green-500 hover:bg-green-600 text-white py-2 rounded-full text-lg transition-colors" style="width: 70%;">
+                          🎤 קריאת טקסט
+                        </button>
+                      </div>
+                      
+                      <!-- Colorblind Mode -->
+                      <div class="flex flex-col items-center justify-center mb-2">
+                        <label class="block text-sm font-medium text-gray-700">מצב עיוורי צבעים</label>
+                        <button id="colorblind-btn" class="bg-purple-500 hover:bg-purple-600 text-white py-2 rounded-full text-lg transition-colors" style="width: 70%;">
+                          👁️  הפעל מצב עיוורי צבעים
+                        </button>
+                        <p class="text-xs text-gray-500 mt-1">מצב עיוורי צבעים - משפר את הניגודיות והצבעים עבור עיוורי צבעים</p>
+                      </div>
+                      
+                      <!-- Font Size Slider -->
+                      <div class="flex flex-col items-center justify-center mb-1">
+                        <input type="range" id="font-size-slider" min="1" max="1.5" step="0.05" value="1" class="h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" style="width: 80%;">
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        </div>
+                        <div class="text-center mt-2">
+                          <span id="font-size-percentage" class="text-xl font-medium text-blue-600">100%</span>
+                        </div>
+                        <p class="text-base font-semibold text-black text-center mt-1">שליטה בגודל הטקסט - התאם לפי העדפתך</p>
+                      </div>
+                    </div>
+                    
+                    <!-- Accessibility Button -->
+                    <button id="accessibility-btn" class="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
+                      <img src="images/accessibility.png" alt="Accessibility Options" class="w-9 h-9">
+                    </button>
+                  </div>
               </footer>
               </div>
             </div>
