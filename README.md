@@ -1,8 +1,8 @@
-# שי שטרית - דלתות קו־אפס (Shay Shtrit - Zero Line Doors)
+# שי שטרית - דלתות קו־אפס (Shay Shitrit - Zero Line Doors)
 
 ## Overview
 
-This website showcases Shay Shtrit's professional door work, including a gallery of projects and contact information.
+This website showcases Shay Shitrit's professional door work, including a gallery of projects and contact information.
 
 ## Features
 
@@ -103,3 +103,4 @@ The converted version is significantly faster than the original React version:
 - **Smaller bundle size**
 - **Faster initial load**
 - **Better caching with service worker**
+
