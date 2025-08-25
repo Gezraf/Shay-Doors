@@ -21,6 +21,100 @@
   
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
+  
+  <style>
+    /* Desktop and large screens (940px and above) */
+    @media (min-width: 940px) {
+      .gallery-filter {
+        height: 2.5rem; /* h-10 */
+        padding: 0.75rem 1.5rem; /* px-6 py-3 */
+        font-size: 0.875rem; /* text-sm */
+        gap: 0.5rem; /* gap-2 */
+      }
+      
+      .sub-filter {
+        height: 2.75rem; /* h-11 */
+        padding: 0.75rem 1.5rem; /* px-6 py-3 */
+        font-size: 0.875rem; /* text-sm */
+        gap: 0.5rem; /* gap-2 */
+      }
+      
+      .filter-container {
+        gap: 1.5rem; /* gap-6 */
+      }
+      
+      .sub-filter-container {
+        gap: 1rem; /* gap-4 */
+      }
+    }
+    
+    /* Mobile and tablet screens (below 940px) */
+    @media (max-width: 939px) {
+      .gallery-filter {
+        min-height: 3rem; /* allow for 2 lines */
+        height: auto; /* flexible height */
+        padding: 0.5rem clamp(0.4rem, 1.5vw, 0.8rem); /* responsive padding */
+        font-size: clamp(0.7rem, 2.2vw, 0.8rem); /* smaller responsive font */
+        gap: 0.25rem;
+        white-space: normal; /* allow text wrapping */
+        line-height: 1.2; /* tighter line height */
+        text-align: center; /* center multi-line text */
+        min-width: 0;
+        flex-shrink: 1;
+        max-width: 30%; /* prevent buttons from being too wide */
+        word-break: keep-all; /* keep words together */
+        overflow-wrap: break-word; /* only break at word boundaries */
+        hyphens: none; /* no hyphenation */
+      }
+      
+      .sub-filter {
+        min-height: 3.25rem; /* allow for 2 lines */
+        height: auto; /* flexible height */
+        padding: 0.5rem clamp(0.4rem, 1.5vw, 0.8rem); /* responsive padding */
+        font-size: clamp(0.7rem, 2.2vw, 0.8rem); /* smaller responsive font */
+        gap: 0.25rem;
+        white-space: normal; /* allow text wrapping */
+        line-height: 1.2; /* tighter line height */
+        text-align: center; /* center multi-line text */
+        min-width: 0;
+        flex-shrink: 1;
+        max-width: 45%; /* slightly wider for sub-filters */
+        word-break: keep-all; /* keep words together */
+        overflow-wrap: break-word; /* only break at word boundaries */
+        hyphens: none; /* no hyphenation */
+      }
+      
+      .filter-container {
+        gap: clamp(0.5rem, 2vw, 1rem); /* responsive gap */
+        padding: 0 1rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        justify-content: center; /* ensure centering */
+        align-items: center; /* vertical centering */
+      }
+      
+      .filter-container::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .sub-filter-container {
+        gap: clamp(0.5rem, 1.5vw, 0.75rem); /* responsive gap */
+        padding: 0 1rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        justify-content: center; /* ensure centering */
+        align-items: center; /* vertical centering */
+      }
+      
+      .sub-filter-container::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="root">
@@ -83,7 +177,7 @@
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                       <!-- Filter Buttons -->
                       <div class="mb-12">
-                        <div class="flex flex-wrap justify-center gap-6">
+                        <div class="filter-container flex flex-nowrap md:flex-wrap justify-start md:justify-center">
                           <button onclick="filterGallery('all')" class="gallery-filter active inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-6 py-3 rounded-xl font-medium transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white shadow-lg">
                             כל העבודות
                           </button>
@@ -112,7 +206,7 @@
                             <h3 class="text-xl font-bold text-slate-800">בחר סוג חיפוי:</h3>
                             <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mx-auto"></div>
                             </div>
-                          <div class="flex flex-wrap justify-center gap-4 mb-4">
+                                                     <div class="sub-filter-container flex flex-nowrap md:flex-wrap justify-center mb-4">
                             <button onclick="filterGallery('line-zero-aluminum')" class="sub-filter group relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-slate-50 to-slate-100 border-2 border-slate-200 text-slate-700 hover:from-blue-50 hover:to-blue-100 hover:border-blue-300 hover:text-blue-700 hover:shadow-lg transform hover:scale-105">
                               <span class="relative z-10">אלומיניום</span>
                               <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
@@ -135,7 +229,7 @@
                             <h3 class="text-xl font-bold text-slate-800">בחר סוג:</h3>
                             <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mx-auto"></div>
                           </div>
-                          <div class="flex flex-wrap justify-center gap-4">
+                                                     <div class="sub-filter-container flex flex-nowrap md:flex-wrap justify-center">
                             <button onclick="filterGallery('entrance-modern')" class="sub-filter group relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-slate-50 to-slate-100 border-2 border-slate-200 text-slate-700 hover:from-blue-50 hover:to-blue-100 hover:border-blue-300 hover:text-blue-700 hover:shadow-lg transform hover:scale-105">
                               <span class="relative z-10">מודרניות</span>
                               <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
