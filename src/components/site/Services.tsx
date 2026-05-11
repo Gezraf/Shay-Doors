@@ -40,18 +40,14 @@ export function Services() {
   return (
     <section
       id="services"
-      className="relative scroll-mt-24 bg-gradient-to-b from-[color:var(--surface)] to-white py-20 sm:py-28 lg:py-32"
+      className="relative scroll-mt-24 bg-gradient-to-b from-[color:var(--surface)] to-white pt-20 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center">
           <SectionEyebrow>השירותים שלנו</SectionEyebrow>
           <h2 className="mt-4 font-display text-4xl leading-[1.08] text-[color:var(--ink)] text-balance sm:text-5xl lg:text-6xl">
-            מקצוע אחד. <span className="text-[color:var(--brand)]">סטנדרט אחד.</span>
+            מה שאני <span className="text-[color:var(--brand)]">מציע בשבילכם:</span>
           </h2>
-          <p className="mt-5 text-base leading-7 text-[color:var(--ink)]/65 sm:text-lg sm:leading-8">
-            מהמדידה הראשונה ועד הברגת הציר האחרון, אנחנו מבצעים את הפרויקט שלכם ביד אמן, עם חומרים
-            נבחרים ופרטי גימור שמרגישים יקרים גם במגע.
-          </p>
         </header>
 
         <div className="mt-14 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-2 md:gap-7">

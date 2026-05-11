@@ -47,8 +47,8 @@ export function Testimonials() {
         <header className="mx-auto max-w-3xl text-center">
           <SectionEyebrow>לקוחות מספרים</SectionEyebrow>
           <h2 className="mt-4 font-display text-4xl leading-[1.08] text-balance sm:text-5xl lg:text-6xl">
-            ההמלצה הכי טובה <span className="text-[color:var(--brand-soft)]">היא דלת פתוחה</span>{" "}
-            אצל אחרים.
+            ההמלצות הכי טובות{" "}
+            <span className="text-[color:var(--brand-soft)]">פותחות דלתות לאחרים.</span>
           </h2>
         </header>
 

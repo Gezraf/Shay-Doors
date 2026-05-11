@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -68,6 +68,25 @@ export function Gallery() {
 
   useEffect(() => setVisible(12), [filter]);
 
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const node = sentinelRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible((current) =>
+            current >= filtered.length ? current : current + 12,
+          );
+        }
+      },
+      { rootMargin: "800px 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [filtered.length, visible]);
+
   return (
     <section
       id="gallery"
@@ -123,14 +142,8 @@ export function Gallery() {
           )}
 
           {filtered.length > visible && (
-            <div className="mt-10 text-center sm:mt-12">
-              <button
-                onClick={() => setVisible((current) => current + 12)}
-                className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--border)] bg-white px-7 py-3 text-sm font-semibold transition hover:border-[color:var(--brand)] hover:text-[color:var(--brand)]"
-              >
-                הצגת תמונות נוספות
-                <span className="text-[color:var(--brand)]">+</span>
-              </button>
+            <div ref={sentinelRef} className="mt-10 flex justify-center sm:mt-12" aria-hidden>
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[color:var(--border)] border-t-[color:var(--brand)]" />
             </div>
           )}
         </div>

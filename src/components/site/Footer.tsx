@@ -5,15 +5,19 @@ import { WhatsAppIcon } from "./WhatsAppIcon";
 export function Footer() {
   return (
     <footer className="bg-[color:var(--ink)] text-white">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16">
+      <div className="mx-auto max-w-7xl px-3 py-14 sm:px-8 sm:py-16">
         <div className="grid gap-10 md:grid-cols-3 md:gap-12">
           <div>
-            <div className="font-display text-xl text-white sm:text-2xl">
-              שי <span className="text-[color:var(--brand-soft)]">דלתות יוקרה</span>
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-lg bg-[color:var(--brand)] font-display text-xl text-white">
+                ש
+              </span>
+              <span className="font-display text-xl text-white sm:text-2xl">
+                שי <span className="text-[color:var(--brand-soft)]">דלתות יוקרה</span>
+              </span>
             </div>
             <p className="mt-5 max-w-xs leading-7 text-white/62">
-              מומחים בייצור והתקנה של דלתות קו־אפס וחיפויי חזית, עם שירות אישי וגימור יוקרתי שמורגש
-              כבר מהכניסה הראשונה.
+              מומחה בייצור והתקנה של דלתות קו-אפס איכותיות עם שירות מקצועי ואישי.
             </p>
             <p className="mt-6 font-display text-lg font-bold text-[color:var(--brand-soft)]">
               "פותחים דלת לאיכות"

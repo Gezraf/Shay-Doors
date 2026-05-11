@@ -239,9 +239,16 @@
 }
 
 .hero-ambient-image {
-  opacity: 0.3;
-  filter: saturate(0.78) contrast(0.9) brightness(0.9);
+  opacity: 0.55;
+  filter: saturate(0.85) contrast(0.95) brightness(0.95);
   transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .hero-ambient-image {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
 }
 
 .hero-overlay {
@@ -344,7 +351,7 @@
     inset 0 2px 4px 0 color-mix(in oklab, white 10%, transparent),
     0 0 30px color-mix(in oklab, var(--brand) 52%, transparent);
   overflow: hidden;
-  animation: doorFrameGlow 6s ease-in-out infinite;
+  animation: doorFrameGlow 7s ease-in-out infinite;
 }
 .door-hero-left,
 .door-hero-right {
@@ -369,12 +376,12 @@
 .door-hero-left {
   left: 10px;
   transform-origin: left center;
-  animation: doorLeftOpen 6.2s cubic-bezier(0.18, 0.75, 0.2, 1) infinite;
+  animation: doorLeftOpen 7.2s cubic-bezier(0.18, 0.75, 0.2, 1) infinite;
 }
 .door-hero-right {
   right: 10px;
   transform-origin: right center;
-  animation: doorRightOpen 6.2s cubic-bezier(0.18, 0.75, 0.2, 1) infinite;
+  animation: doorRightOpen 7.2s cubic-bezier(0.18, 0.75, 0.2, 1) infinite;
 }
 
 .door-hero-frame::before {
@@ -481,7 +488,7 @@
   z-index: 0;
   opacity: 0;
   transform-origin: center;
-  animation: doorRevealFade 6.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation: doorRevealFade 7.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 @keyframes doorRevealFade {
   0%,
@@ -524,7 +531,7 @@
   background: color-mix(in oklab, var(--ink) 64%, transparent);
   color: white;
   backdrop-filter: blur(12px);
-  animation: doorCaptionReveal 6.2s ease-in-out infinite;
+  animation: doorCaptionReveal 7.2s ease-in-out infinite;
 }
 
 @keyframes doorCaptionReveal {
@@ -622,6 +629,21 @@
 @media (max-width: 480px) {
   .door-hero-container {
     width: min(100%, 18.5rem);
+  }
+  .door-hero-caption {
+    inset-inline: 0.5rem;
+    bottom: 0.5rem;
+    padding: 0.5rem 0.625rem;
+    border-radius: 0.75rem;
+  }
+  .door-hero-caption .text-\[0\.65rem\] {
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+  }
+  .door-hero-caption .text-sm {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    margin-top: 0.25rem;
   }
 }
 

@@ -4,15 +4,15 @@ import { Check } from "lucide-react";
 const PORTRAIT = "https://res.cloudinary.com/dkgx2zv2g/image/upload/f_auto,q_auto,w_900/v1754534258/WhatsApp_Image_2025-08-06_at_21.49.37_v55bsv.jpg";
 
 const benefits: [string, string][] = [
-  ["אחריות יצרן מלאה", "על כל פרויקט שיוצא מהמתפרה."],
+  ["אחריות מלאה", "על כל דלת ועל כל עבודת התקנה."],
   ["חומרים פרימיום", "אלומיניום, פורצלן וזכוכית מהמובילים בעולם."],
-  ["ליווי אישי", "ישירות מהמייסד, מההזמנה ועד אחרי ההתקנה."],
-  ["דיוק ללא פשרות", "פינישים נקיים, חריצים מדויקים, גימור יוקרתי."],
+  ["שירות אישי", "ישירות ממני, מהמדידה ועד אחרי ההתקנה."],
+  ["דיוק בהתקנה", "מדידות מדויקות, גימור נקי ועבודה ללא פשרות."],
 ];
 
 export function About() {
   return (
-    <section id="about" className="relative scroll-mt-24 py-24 sm:py-32 bg-white">
+    <section id="about" className="relative scroll-mt-24 pt-12 pb-24 sm:pt-16 sm:pb-32 bg-white">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
           <div className="relative lg:col-span-5">
@@ -34,14 +34,6 @@ export function About() {
               עבודת אומנות{" "}
               <span className="text-[color:var(--brand)]">בכל דלת.</span>
             </h2>
-            <div className="mt-6 space-y-4 text-[color:var(--ink)]/70 text-base sm:text-lg leading-relaxed">
-              <p>
-                שי שטרית — מומחה בייצור והתקנה של דלתות קו־אפס, חיפויי אלומיניום, פורצלן וזכוכית. כל דלת היא יצירת אומנות המותאמת אישית לבית ולסגנון שלכם.
-              </p>
-              <p>
-                העבודה נעשית מהמדידה ועד ההתקנה הסופית — בדיוק, באיכות ובגימור שלא מתפשרים.
-              </p>
-            </div>
 
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {benefits.map(([t, d]) => (

@@ -11,8 +11,13 @@ export function Contact() {
     const data = new FormData(event.currentTarget);
     const name = data.get("name");
     const phone = data.get("phone");
-    const message = data.get("message") || "";
-    const text = `שלום שי, שמי ${name}.%0A${message}%0Aטלפון: ${phone}`;
+    const email = (data.get("email") || "").toString().trim();
+    const message = (data.get("message") || "").toString().trim();
+    const lines = [`שלום שי, שמי ${name}.`];
+    if (message) lines.push(`פרויקט / הערות: ${message}`);
+    lines.push(`טלפון: ${phone}`);
+    if (email) lines.push(`אימייל: ${email}`);
+    const text = encodeURIComponent(lines.join("\n"));
     window.open(`https://wa.me/972525085086?text=${text}`, "_blank");
     setSent(true);
   }
