@@ -1,0 +1,12 @@
+{
+  "name": "שי דלתות יוקרה",
+  "short_name": "שי דלתות",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "description": "דלתות קו־אפס, חיפויי חזית ודלתות כניסה מעוצבות בייצור והתקנה אישית.",
+  "icons": []
+}
