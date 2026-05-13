@@ -1,4 +1,4 @@
-aimport { Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Phone } from "lucide-react";
 
