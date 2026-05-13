@@ -1,4 +1,3 @@
-import { SectionEyebrow } from "./Services";
 import { Check } from "lucide-react";
 
 const PORTRAIT = "https://res.cloudinary.com/dkgx2zv2g/image/upload/f_auto,q_auto,w_900/v1754534258/WhatsApp_Image_2025-08-06_at_21.49.37_v55bsv.jpg";
@@ -29,8 +28,7 @@ export function About() {
           </div>
 
           <div className="lg:col-span-7 lg:pr-10">
-            <SectionEyebrow>מי אנחנו</SectionEyebrow>
-            <h2 className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl text-balance leading-[1.1] text-[color:var(--ink)]">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-balance leading-[1.1] text-[color:var(--ink)]">
               עבודת אומנות{" "}
               <span className="text-[color:var(--brand)]">בכל דלת.</span>
             </h2>
