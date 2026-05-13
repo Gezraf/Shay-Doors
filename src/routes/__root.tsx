@@ -133,11 +133,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "דלתות קו־אפס, חיפויי חזית ודלתות כניסה מעוצבות בייצור והתקנה אישית.",
       },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "description", content: "Builds modern, high-converting websites for businesses to elevate their digital presence." },
-      { property: "og:description", content: "Builds modern, high-converting websites for businesses to elevate their digital presence." },
-      { name: "twitter:description", content: "Builds modern, high-converting websites for businesses to elevate their digital presence." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b7c78c76-7714-4d01-8c69-c487a34aa9e6/id-preview-8fb3cdb4--d0e8f38a-243a-4f3d-8091-822d6d1254b8.lovable.app-1778517782171.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b7c78c76-7714-4d01-8c69-c487a34aa9e6/id-preview-8fb3cdb4--d0e8f38a-243a-4f3d-8091-822d6d1254b8.lovable.app-1778517782171.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
