@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+aimport { Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Phone } from "lucide-react";
 
 const HERO_AMBIENT =
@@ -58,7 +59,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="order-2 flex justify-center lg:order-2 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:justify-end">
+          <div className="order-2 flex justify-center lg:order-2 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 lg:self-end lg:justify-end">
             <div className="door-hero-container w-full max-w-[13.5rem] sm:max-w-[24.75rem]">
               <div className="door-hero-frame">
                 <div className="door-hero-reveal" style={{ backgroundImage: `url(${HERO_BG})` }} />
@@ -112,9 +113,40 @@ function Stat({ number, label }: { number: string; label: string }) {
   return (
     <div className="flex flex-col items-center text-center">
       <div className="font-display text-2xl font-extrabold tabular-nums text-[color:var(--brand-soft)] sm:text-4xl">
-        {number}
+        <CountUp value={number} />
       </div>
       <div className="mt-1 text-[0.7rem] font-medium text-white/60 sm:text-sm">{label}</div>
     </div>
   );
+}
+
+function CountUp({ value, duration = 1400 }: { value: string; duration?: number }) {
+  // Extract numeric portion, preserve prefix (e.g. "+") and suffix (e.g. "%", ",")
+  const match = value.match(/^([^\d-]*)([\d,]+)(.*)$/);
+  const prefix = match?.[1] ?? "";
+  const numericStr = match?.[2] ?? "0";
+  const suffix = match?.[3] ?? "";
+  const target = parseInt(numericStr.replace(/,/g, ""), 10) || 0;
+  const hasComma = numericStr.includes(",");
+
+  const [display, setDisplay] = useState(0);
+  const startedRef = useRef(false);
+
+  useEffect(() => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setDisplay(Math.round(target * eased));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration]);
+
+  const formatted = hasComma ? display.toLocaleString("en-US") : String(display);
+  return <>{prefix}{formatted}{suffix}</>;
 }
