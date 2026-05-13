@@ -37,20 +37,29 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link to="/" className="flex min-w-0 flex-col leading-tight">
-          <span
-            className={`font-display text-lg sm:text-xl ${
-              onHero ? "text-white" : "text-[color:var(--ink)]"
-            }`}
-          >
-            שי <span className="text-[color:var(--brand)]">דלתות יוקרה</span>
-          </span>
-          <span
-            className={`text-[11px] font-medium tracking-wide sm:text-xs ${
-              onHero ? "text-[color:var(--brand-soft)]" : "text-[color:var(--brand)]/80"
-            }`}
-          >
-            פותחים דלת לאיכות
+        <Link to="/" className="flex min-w-0 items-center gap-3">
+          <img
+            src="/logo.svg"
+            alt="לוגו"
+            width={40}
+            height={40}
+            className="h-10 w-10 shrink-0 rounded-md object-contain"
+          />
+          <span className="flex min-w-0 flex-col leading-tight">
+            <span
+              className={`font-display text-lg sm:text-xl ${
+                onHero ? "text-white" : "text-[color:var(--ink)]"
+              }`}
+            >
+              שי <span className="text-[color:var(--brand)]">דלתות יוקרה</span>
+            </span>
+            <span
+              className={`text-[11px] font-medium tracking-wide sm:text-xs ${
+                onHero ? "text-[color:var(--brand-soft)]" : "text-[color:var(--brand)]/80"
+              }`}
+            >
+              פותחים דלת לאיכות
+            </span>
           </span>
         </Link>
 
