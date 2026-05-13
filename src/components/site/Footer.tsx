@@ -9,9 +9,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-3 md:gap-12">
           <div>
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-lg bg-[color:var(--brand)] font-display text-xl text-white">
-                ש
-              </span>
+              <img src="/logo.svg" alt="לוגו" width={40} height={40} className="h-10 w-10 rounded-lg object-contain" />
               <span className="font-display text-xl text-white sm:text-2xl">
                 שי <span className="text-[color:var(--brand-soft)]">דלתות יוקרה</span>
               </span>
@@ -99,9 +97,9 @@ export function Footer() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
-        className="fixed bottom-5 left-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-luxe transition-transform hover:scale-110 sm:bottom-6 sm:left-6"
+        className="fixed bottom-5 left-4 z-40 grid h-12 w-12 place-items-center rounded-full bg-[#25D366] text-white shadow-luxe transition-transform hover:scale-110 sm:bottom-6 sm:left-6 sm:h-14 sm:w-14"
       >
-        <WhatsAppIcon className="h-7 w-7" />
+        <WhatsAppIcon className="h-6 w-6 sm:h-7 sm:w-7" />
       </a>
     </footer>
   );
