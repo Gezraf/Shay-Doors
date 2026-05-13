@@ -28,12 +28,12 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ${
         scrolled
-          ? "border-b border-[color:var(--border)] bg-white/95 shadow-sm backdrop-blur-xl"
+          ? "border-[color:var(--border)] bg-white/95 shadow-sm backdrop-blur-xl"
           : onHero
-            ? "bg-transparent"
-            : "border-b border-[color:var(--border)] bg-white/95 backdrop-blur-xl"
+            ? "border-transparent bg-transparent"
+            : "border-[color:var(--border)] bg-white/95 backdrop-blur-xl"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
