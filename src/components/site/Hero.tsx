@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="hero-shell relative isolate overflow-hidden pt-24 pb-16 sm:pt-30 sm:pb-24 lg:py-36"
+      className="hero-shell relative isolate overflow-hidden pt-24 pb-16 sm:pt-30 sm:pb-24 lg:py-36 lg:min-h-screen lg:flex lg:flex-col lg:justify-center"
     >
       <div className="absolute inset-0 -z-10">
         <img
