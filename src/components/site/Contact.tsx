@@ -92,7 +92,7 @@ export function Contact() {
                 name="message"
                 rows={5}
                 placeholder="ספרו לנו על הפרויקט: סוג הדלת, סגנון, לוחות זמנים..."
-                className="w-full rounded-xl border border-[color:var(--border)] bg-white px-4 py-3 outline-none transition focus:border-[color:var(--brand)] focus:ring-2 focus:ring-[color:var(--brand)]/25"
+                className="w-full rounded-xl border border-[color:var(--border)] bg-white px-4 py-3 outline-none transition focus:border-[color:var(--brand)] focus:ring-2 focus:ring-[color:var(--brand)]/20"
               />
             </div>
 
@@ -141,7 +141,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-[color:var(--border)] bg-white px-4 py-3 outline-none transition focus:border-[color:var(--brand)] focus:ring-2 focus:ring-[color:var(--brand)]/25"
+        className="w-full rounded-xl border border-[color:var(--border)] bg-white px-4 py-3 outline-none transition focus:border-[color:var(--brand)] focus:ring-2 focus:ring-[color:var(--brand)]/20"
       />
     </div>
   );

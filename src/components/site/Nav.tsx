@@ -91,7 +91,7 @@ export function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="tel:+972525085086"
-            className="hidden min-h-11 items-center gap-2 rounded-xl btn-brand px-5 py-2.5 text-sm font-semibold sm:inline-flex"
+            className="hidden min-h-11 items-center gap-2 rounded-xl btn-brand px-5 py-2.5 text-sm font-bold sm:inline-flex"
           >
             <Phone className="h-4 w-4" />
             התקשרו עכשיו
@@ -130,7 +130,7 @@ export function Nav() {
               ))}
               <a
                 href="tel:+972525085086"
-                className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl btn-brand px-5 py-3 font-semibold"
+                className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl btn-brand px-5 py-3 font-bold"
               >
                 <Phone className="h-4 w-4" /> 052-508-5086
               </a>
